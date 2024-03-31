@@ -1,15 +1,15 @@
 vim9script
 
-import autoload "../autoload/netrw_salad/private.vim" as api
+import autoload "../autoload/netrw_salad/config.vim"
 
-var config = api.GetConfig()
+var conf = config.Get()
 
-if (config.configure_netrw)
+if (conf.configure_netrw)
   g:netrw_hide = 0
   g:netrw_preview = 1
   g:netrw_altfile = 1
 endif
 
-if (api.CanMap())
+if (config.CanMap())
   nnoremap - :Explore<CR>
 endif
