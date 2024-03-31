@@ -60,4 +60,4 @@ git clone https://github.com/saccarosium/vim-netrw-salad
 
 ## Documentation
 
-See `doc/netrw-salad.txt`
+See [doc/netrw-salad.txt](https://github.com/saccarosium/vim-netrw-salad/blob/main/doc/netrw-salad.txt)
