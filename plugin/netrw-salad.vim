@@ -1,6 +1,6 @@
 vim9script
 
-import autoload "../autoload/netrw_salad/config.vim"
+import autoload "../import/config.vim"
 
 var conf = config.Get()
 
