@@ -7,10 +7,6 @@ import autoload "../import/config.vim"
 # }}}
 # File Helpers: {{{ 
 
-def FileValid(file: string): bool
-  return filereadable(file) || isdirectory(file)
-enddef
-
 def Slash(): string
   return &shellslash ? '\' : '/'
 enddef
@@ -19,10 +15,11 @@ def GetFileUnderCursor(): string
   var line = getline('.')
   var dir = b:netrw_curdir
   var file = dir .. Slash() .. line
+  file = substitute(file, "\*$", "", "")
   if line ==# "./" || line ==# '../'
     file = line
   endif
-  return FileValid(file) ? file : ""
+  return file
 enddef
 
 # }}}
@@ -79,10 +76,6 @@ enddef
 # Main Functions: {{{
 
 def Delete(file: string)
-  if !FileValid(file)
-    echoerr "File is not readable"
-    return
-  endif
   var isdir = isdirectory(file)
   var in = PromptUser("Confirm deletion of <" .. file .. ">", isdir)
   var failed: number
@@ -112,10 +105,6 @@ def DeleteFileUnderCursor()
 enddef
 
 def Rename(src: string, dst: string)
-  if !FileValid(src)
-    echoerr "File is not readable"
-    return
-  endif
   var failed = rename(src, dst)
   if failed
     echoerr "Error while deleting file"
