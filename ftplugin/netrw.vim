@@ -2,7 +2,7 @@ vim9script
 
 # Imports: {{{
 
-import autoload "../import/config.vim"
+import "netrw_salad/config.vim"
 
 # }}}
 # File Helpers: {{{ 
